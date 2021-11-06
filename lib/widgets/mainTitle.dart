@@ -3,7 +3,7 @@ import 'package:zidotask/utils.dart';
 
 class MainTitle extends StatefulWidget {
   final String title;
-  MainTitle({required this.title});
+  MainTitle({this.title});
   @override
   _MainTitleState createState() => _MainTitleState();
 }
@@ -15,7 +15,6 @@ class _MainTitleState extends State<MainTitle> {
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
-
           Text(
             "${widget.title}",
             style: header1,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zidotask/I10n/app_localizations.dart';
 import 'package:zidotask/widgets/mainCard.dart';
 
 class AdCard extends StatefulWidget {
@@ -37,8 +38,8 @@ class _AdCardState extends State<AdCard> {
                       Radius.circular(5.0),
                     ),
                     image: DecorationImage(
-                      image: NetworkImage(
-                        widget.img,
+                      image: AssetImage(
+                        'assets/img/holder.png',
                       ),
                       fit: BoxFit.cover,
                     ))),
@@ -54,7 +55,7 @@ class _AdCardState extends State<AdCard> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "This is an exmaple text to view ",
+                      AppLocalizations.of(context).translate('exampleText'),
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
@@ -64,7 +65,9 @@ class _AdCardState extends State<AdCard> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        CircleAvatar(),
+                        CircleAvatar(
+                          backgroundImage: AssetImage("assets/img/avatar.png"),
+                        ),
                         SizedBox(
                           width: 10,
                         ),
@@ -73,10 +76,12 @@ class _AdCardState extends State<AdCard> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "user name",
+                              AppLocalizations.of(context)
+                                  .translate('userName'),
                               style: TextStyle(color: Colors.white),
                             ),
-                            Text("exa", style: TextStyle(color: Colors.white))
+                            Text(AppLocalizations.of(context).translate('exa'),
+                                style: TextStyle(color: Colors.white))
                           ],
                         ),
                       ],

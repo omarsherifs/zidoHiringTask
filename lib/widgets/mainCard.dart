@@ -4,8 +4,7 @@ class MainCard extends StatefulWidget {
   final Widget cardContent;
   final double radius;
   final double elevation;
-  MainCard(
-      {required this.cardContent, this.radius = 5.0, this.elevation = 2.0});
+  MainCard({this.cardContent, this.radius = 5.0, this.elevation = 2.0});
   @override
   _MainCardState createState() => _MainCardState();
 }

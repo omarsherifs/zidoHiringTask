@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:zidotask/I10n/app_localizations.dart';
 import 'package:zidotask/utils.dart';
 import 'package:zidotask/widgets/mainCard.dart';
 
@@ -40,8 +41,8 @@ class _LatestItemCardState extends State<LatestItemCard> {
                           height: 140,
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                              image: NetworkImage(
-                                'https://picsum.photos/seed/picsum/200/300',
+                              image: AssetImage(
+                                widget.img,
                               ),
                               fit: BoxFit.cover,
                             ),
@@ -108,7 +109,8 @@ class _LatestItemCardState extends State<LatestItemCard> {
                           Container(
                               width: MediaQuery.of(context).size.width * 0.4,
                               child: Text(
-                                  "This text should show details of product",
+                                  AppLocalizations.of(context)
+                                      .translate('exampleText'),
                                   softWrap: true,
                                   style: TextStyle(
                                     fontSize: 12,
@@ -120,8 +122,9 @@ class _LatestItemCardState extends State<LatestItemCard> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                width: 85,
-                                height: 30,
+                                width: MediaQuery.of(context).size.width * 0.21,
+                                height:
+                                    MediaQuery.of(context).size.width * 0.08,
                                 decoration: BoxDecoration(
                                   border: Border.all(
                                     color: mainColor,
@@ -142,8 +145,9 @@ class _LatestItemCardState extends State<LatestItemCard> {
                                 )),
                               ),
                               Container(
-                                width: 55,
-                                height: 30,
+                                width: MediaQuery.of(context).size.width * 0.12,
+                                height:
+                                    MediaQuery.of(context).size.width * 0.08,
                                 decoration: BoxDecoration(
                                   border: Border.all(
                                     color: Colors.cyan,

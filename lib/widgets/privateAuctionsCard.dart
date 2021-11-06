@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:zidotask/I10n/app_localizations.dart';
 import 'package:zidotask/utils.dart';
 import 'package:zidotask/widgets/mainCard.dart';
 
@@ -33,8 +34,8 @@ class _PrivateAuctionCardState extends State<PrivateAuctionCard> {
                     Container(
                       width: 130,
                       height: 130,
-                      child: Image.network(
-                        'https://picsum.photos/seed/picsum/200/300',
+                      child: Image.asset(
+                        widget.img,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -46,7 +47,9 @@ class _PrivateAuctionCardState extends State<PrivateAuctionCard> {
                         children: [
                           Container(
                               width: MediaQuery.of(context).size.width * 0.4,
-                              child: Text("Auction title exmple to show",
+                              child: Text(
+                                  AppLocalizations.of(context)
+                                      .translate('exampleText'),
                                   softWrap: true,
                                   style: TextStyle(
                                       fontSize: 15,
@@ -55,14 +58,22 @@ class _PrivateAuctionCardState extends State<PrivateAuctionCard> {
                             children: [
                               CircleAvatar(
                                 radius: 9,
+                                backgroundImage:
+                                    AssetImage("assets/img/avatar.png"),
                               ),
                               SizedBox(
                                 width: 7,
                               ),
                               Column(
                                 children: [
-                                  Text("Auction Details",
-                                      style: TextStyle(fontSize: 13)),
+                                  Container(
+                                    width: MediaQuery.of(context).size.width *0.4,
+                                    child: Text(
+                                        AppLocalizations.of(context)
+                                            .translate('exampleText'),
+                                            softWrap: true,
+                                        style: TextStyle(fontSize: 13,)),
+                                  ),
                                 ],
                               )
                             ],
@@ -101,7 +112,8 @@ class _PrivateAuctionCardState extends State<PrivateAuctionCard> {
                                 ),
                                 child: Center(
                                     child: Text(
-                                  "Join",
+                                  AppLocalizations.of(context)
+                                      .translate('used'),
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,

@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:zidotask/I10n/app_localizations.dart';
 import 'package:zidotask/utils.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:zidotask/widgets/adsWidget.dart';
@@ -25,10 +26,7 @@ class _HomePageState extends State<HomePage> {
           onPressed: () {},
         ),
         centerTitle: true,
-        title: Text(
-          "Zido",
-          style: TextStyle(fontFamily: "HelveticalNeuel", fontSize: 30),
-        ),
+        title: Image.asset("assets/img/logo.png"),
         actions: [
           IconButton(
             icon: Icon(FontAwesomeIcons.bell),
@@ -48,19 +46,19 @@ class _HomePageState extends State<HomePage> {
         unselectedLabelStyle: TextStyle(color: mainColor),
         items: [
           BottomNavigationBarItem(
-              label: "Home",
+              label: AppLocalizations.of(context).translate('home'),
               icon: Icon(
                 Icons.home,
                 color: mainColor,
               )),
           BottomNavigationBarItem(
-              label: "Buy",
+              label: AppLocalizations.of(context).translate('buy'),
               icon: Icon(Icons.shopping_cart_outlined, color: Colors.black)),
           BottomNavigationBarItem(
-              label: "Sell",
+              label: AppLocalizations.of(context).translate('sell'),
               icon: Icon(Icons.add_circle_outline, color: Colors.black)),
           BottomNavigationBarItem(
-              label: "Account",
+              label: AppLocalizations.of(context).translate('account'),
               icon: Icon(Icons.person_outline, color: Colors.black))
         ],
       ),
@@ -79,13 +77,13 @@ class _HomePageState extends State<HomePage> {
                     });
                   },
                 ),
-                items: [1, 2, 3, 4, 5].map((i) {
+                items: [1, 2, 3].map((i) {
                   return Builder(
                     builder: (BuildContext context) {
                       return Container(
                           width: 1000,
-                          child: Image.network(
-                            'https://picsum.photos/seed/picsum/200/300',
+                          child: Image.asset(
+                            'assets/img/Slider$i.png',
                             fit: BoxFit.cover,
                           ));
                     },
@@ -100,9 +98,11 @@ class _HomePageState extends State<HomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              MainTitle(title: "Latest item"),
+              MainTitle(
+                title: AppLocalizations.of(context).translate('latestItem'),
+              ),
               Text(
-                "See All",
+                AppLocalizations.of(context).translate('seeAll'),
                 style: TextStyle(color: mainColor),
               )
             ],
@@ -116,11 +116,33 @@ class _HomePageState extends State<HomePage> {
               primary: false,
               itemCount: 3,
               itemBuilder: (BuildContext context, int index) {
-                return LatestItemCard();
+                return LatestItemCard(
+                  img: 'assets/img/product${index+1}.png',
+                );
               },
             ),
           ),
-          MainTitle(title: "Private Auctions"),
+          MainTitle(
+            title: AppLocalizations.of(context).translate('privateAuctions'),
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.25,
+            width: MediaQuery.of(context).size.width,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              primary: false,
+              itemCount: 3,
+              itemBuilder: (BuildContext context, int index) {
+                return PrivateAuctionCard(
+                  img: "assets/img/product${index+1}.png",
+                );
+              },
+            ),
+          ),
+          MainTitle(
+            title: AppLocalizations.of(context).translate('latestPosts'),
+          ),
           Container(
             height: MediaQuery.of(context).size.height * 0.25,
             width: MediaQuery.of(context).size.width,
@@ -130,21 +152,7 @@ class _HomePageState extends State<HomePage> {
               primary: false,
               itemCount: 2,
               itemBuilder: (BuildContext context, int index) {
-                return PrivateAuctionCard();
-              },
-            ),
-          ),
-          MainTitle(title: "Latest Posts"),
-          Container(
-            height: MediaQuery.of(context).size.height * 0.25,
-            width: MediaQuery.of(context).size.width,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              shrinkWrap: true,
-              primary: false,
-              itemCount: 2,
-              itemBuilder: (BuildContext context, int index) {
-                return AdCard(img: 'https://picsum.photos/seed/picsum/200/300');
+                return AdCard();
               },
             ),
           ),
