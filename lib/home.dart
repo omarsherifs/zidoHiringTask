@@ -1,5 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:zidotask/I10n/AppLanguage.dart';
 import 'package:zidotask/I10n/app_localizations.dart';
 import 'package:zidotask/utils.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -30,7 +33,9 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             icon: Icon(FontAwesomeIcons.bell),
-            onPressed: () {},
+            onPressed: () {
+              changeLangPopUp();
+            },
           )
         ],
       ),
@@ -117,7 +122,7 @@ class _HomePageState extends State<HomePage> {
               itemCount: 3,
               itemBuilder: (BuildContext context, int index) {
                 return LatestItemCard(
-                  img: 'assets/img/product${index+1}.png',
+                  img: 'assets/img/product${index + 1}.png',
                 );
               },
             ),
@@ -135,7 +140,7 @@ class _HomePageState extends State<HomePage> {
               itemCount: 3,
               itemBuilder: (BuildContext context, int index) {
                 return PrivateAuctionCard(
-                  img: "assets/img/product${index+1}.png",
+                  img: "assets/img/product${index + 1}.png",
                 );
               },
             ),
@@ -157,6 +162,40 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget changeLangPopUp() {
+    var appLanguage = Provider.of<AppLanguage>(context);
+    return CupertinoActionSheet(
+      title: new Text('${AppLocalizations.of(context).translate('language')}'),
+      message: new Text(
+          '${AppLocalizations.of(context).translate('changeLanguage')}'),
+      actions: <Widget>[
+        CupertinoActionSheetAction(
+          child: new Text('English'),
+          onPressed: () {
+            appLanguage.changeLanguage(Locale("en"));
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+          },
+        ),
+        CupertinoActionSheetAction(
+          child: new Text('عربى'),
+          onPressed: () {
+            appLanguage.changeLanguage(Locale("ar"));
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+          },
+        )
+      ],
+      cancelButton: CupertinoActionSheetAction(
+        child: new Text('رجوع'),
+        isDefaultAction: true,
+        onPressed: () {
+          Navigator.pop(context, 'Cancel');
+        },
       ),
     );
   }

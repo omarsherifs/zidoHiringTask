@@ -11,5 +11,7 @@
     "userName": "user name",
     "exa": "exa",
     "join": "join",
-    "used": "used"
+    "used": "used",
+    "changeLanguage": "change language",
+    "language": "language"
 }
